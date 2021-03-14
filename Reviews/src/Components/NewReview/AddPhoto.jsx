@@ -13,7 +13,8 @@ class AddPhoto extends React.Component {
   }
 
   handleChange(event) {
-    const { photos, sendClickData } = this.state;
+    const { photos } = this.state;
+    const { sendClickData } = this.props;
     const photoArr = photos;
     photoArr.push(event.target.value);
     sendClickData('add photo to new review add photo form');
@@ -40,7 +41,7 @@ class AddPhoto extends React.Component {
             {i}
             :
             {' '}
-            <input id={`p${i}`} name={i - 1} type="text" onChange={this.handleChange} />
+            <input className="newRevPhotoInput" id={`p${i}`} name={i - 1} type="text" onChange={this.handleChange} />
           </label>
         </div>,
       );
@@ -55,10 +56,10 @@ class AddPhoto extends React.Component {
             onClick={() => { hide(); sendClickData('close new review add photo modal'); }}
             className="pclose"
           >
-            &times;
+            <i className="fas fa-times" />
           </span>
           <h3 className="rSectionTitle">ADD PHOTOS</h3>
-          <p className=".rTextTitle">ENTER THE URLs TO YOUR IMAGES BELOW</p>
+          <p className="rTextTitle">ENTER THE URLs TO YOUR IMAGES BELOW</p>
           <div id="newReviewPhotoInputs">
             <form>
               {photoInputs}

@@ -29,6 +29,8 @@ class ReviewApp extends React.Component {
       prodUrl: null,
     };
 
+    this.newReviewElement = React.createRef();
+
     this.seeMoreReviews = this.seeMoreReviews.bind(this);
     this.getSort = this.getSort.bind(this);
     this.sendNewReview = this.sendNewReview.bind(this);
@@ -48,7 +50,6 @@ class ReviewApp extends React.Component {
       params: { id: prodId },
     })
       .then((data) => {
-        console.log(data);
         this.setState({
           reviews: data.data.results,
           productName: data.data.name,
@@ -124,21 +125,12 @@ class ReviewApp extends React.Component {
 
   photoModal(src) {
     const modal = document.getElementById('pModal');
-    const span = document.getElementsByClassName('pclose');
     const photo = document.getElementsByClassName('pModalPhoto')[0];
     this.setState({
       modalPhoto: src,
     });
     modal.style.display = 'block';
-    const newSpan = [];
-    Object.keys(span).forEach((key) => {
-      span[key].onclick = () => {
-        this.sendClickData('close photo modal with X');
-        modal.style.display = 'none';
-      };
-      newSpan.push(span[key]);
-    });
-    photo.onclick = (event) => {
+    photo.onclick = () => {
       this.sendClickData('close photo modal by clicking photo');
       modal.style.display = 'none';
     };
@@ -221,7 +213,6 @@ class ReviewApp extends React.Component {
       widget: 'reviews',
       time: currentTime,
     };
-    console.log(clickObj);
     axios({
       method: 'post',
       url: '/interactions',
@@ -235,14 +226,20 @@ class ReviewApp extends React.Component {
       $('body').addClass('modal-open');
     } else {
       $('body').removeClass('modal-open');
+      setTimeout(() => this.clearData(), 2000);
     }
     this.setState({
       newReview: !newReview,
     });
   }
 
+  clearData() {
+    $('.radio-btn, .charRadios, .recRadios').prop('checked', false);
+    $('.newRevInput, .newRevPhotoInput').val('');
+    this.newReviewElement.current.clearState();
+  }
+
   render() {
-    console.log(this.state);
     const {
       loaded, reviews, displayedReviews, ratings,
       starsSelected, productName, newReview, prodUrl, modalPhoto,
@@ -295,6 +292,7 @@ class ReviewApp extends React.Component {
                   <div className="modal">
                     <div className="modal-wrap">
                       <NewReview
+                        ref={this.newReviewElement}
                         name={productName}
                         factors={factors}
                         show={newReview}
