@@ -36,3 +36,4 @@ ReviewPhotos.defaultProps = {
 };
 
 export default ReviewPhotos;
+

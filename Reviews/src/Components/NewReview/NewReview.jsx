@@ -80,7 +80,7 @@ class NewReview extends React.Component {
   }
 
   close() {
-    const closeBtn = document.getElementById('modal-btn')
+    const closeBtn = document.getElementById('modal-btn');
     closeBtn.click();
   }
 
