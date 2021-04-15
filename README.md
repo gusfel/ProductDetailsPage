@@ -5,7 +5,7 @@
 
 # ThirdTimesACharm
 
-introduction
+Introduction
 ## Setup
 
 ```bash
@@ -18,7 +18,7 @@ $ npm run start
 
 ## Features
 
-* individule widgets
+* individual widgets
 
 ## Version
 Current available version: **Version: 1.0.0**
