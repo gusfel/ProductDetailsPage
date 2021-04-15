@@ -10,7 +10,7 @@ import FadeInSection from '../Reviews/src/Components/FadeInSection.jsx';
 
 const products = [14931, 14932, 14034, 14296, 14807];
 const randomNum = Math.floor(Math.random() * products.length);
-const id = products[randomNum];
+const id = 23157;
 
 // eslint-disable-next-line import/prefer-default-export
 const GlobalStyle = createGlobalStyle`
