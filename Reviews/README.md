@@ -7,8 +7,8 @@ This is the reviews widget of an online retailer's product page.  It pulls from 
 
 **Technologies Used**
 1. React
-2. ExpressJS
-3. NodeJS
+2. NodeJS
+3. ExpressJS
 4. CSS
 5. HTML
 6. Webpack
