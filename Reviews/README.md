@@ -20,5 +20,5 @@ This is the reviews widget of an online retailer's product page.  It pulls from 
 4. Run npm start
 5. Open localhost:3000
 
-\* The products wont render because you need an api key so please see below for a gif of the functionality
+\* The page will render, but it wont have any product data because you need an api key to access the database so please see below for a gif of the functionality
 ![Image](./ReadmeFiles/Reviews_gif.gif)
